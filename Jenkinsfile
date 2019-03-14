@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('build') {
             steps {
-                sh 'mvn --version'
+                sh 'cf login -u $USERNAME -p $PASSWORD -a https://api.run.pivotal.io'
             }
         }
     }
