@@ -15,6 +15,7 @@ pipeline {
                 sh 'sudo apt-get update'
                 sh 'sudo apt-get install cf-cli'
                 sh 'cf login -u $USERNAME -p $PASSWORD -a https://api.run.pivotal.io'
+                sh 'cf push'
             }
         }
     }
