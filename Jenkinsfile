@@ -1,14 +1,8 @@
 pipeline {
-    agent { docker { image 'ubuntu:18.04' } }
+    agent { dockerfile true }
     stages {
-        stage('build') {
+        stage('Test') {
             steps {
-                sh 'apt-get update'
-                sh 'apt-get install -y wget sudo gnupg'
-                sh 'wget -q -O - https://packages.cloudfoundry.org/debian/cli.cloudfoundry.org.key | sudo apt-key add -'
-                sh 'echo "deb https://packages.cloudfoundry.org/debian stable main" | sudo tee /etc/apt/sources.list.d/cloudfoundry-cli.list'
-                sh 'sudo apt-get update'
-                sh 'sudo apt-get install cf-cli'
                 sh 'cf login -u $USERNAME -p $PASSWORD -a https://api.run.pivotal.io'
             }
         }
